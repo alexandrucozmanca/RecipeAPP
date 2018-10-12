@@ -1,7 +1,10 @@
 package ro.alex.learning.RecipeApplication.domain;
 
+import lombok.*;
+
 import javax.persistence.*;
 
+@Data
 @Entity
 public class Notes {
 
@@ -10,40 +13,9 @@ public class Notes {
     private Long id;
 
     @Lob
-    private String recipeNotes;
+    private String notes;
 
     @OneToOne
     private Recipe recipe;
 
-
-    public Notes(){
-    }
-
-    public Notes(String notes) {
-        this.recipeNotes = notes;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNotes() {
-        return recipeNotes;
-    }
-
-    public void setNotes(String notes) {
-        this.recipeNotes = notes;
-    }
-
-    public Recipe getRecipe() {
-        return recipe;
-    }
-
-    public void setRecipe(Recipe recipe) {
-        this.recipe = recipe;
-    }
 }
