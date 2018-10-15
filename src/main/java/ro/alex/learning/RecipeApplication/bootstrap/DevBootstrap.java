@@ -221,9 +221,10 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
         tacosRecipe.getCategories().add(americanCategory);
         tacosRecipe.getCategories().add(mexicanCategory);
+        tacosRecipe.getCategories().add(italianCategory);
 
         tacosRecipe.setUrl("http://www.simplyrecipes.com/recipes/spicy_grilled_chicken_tacos/");
-        tacosRecipe.setServings(4);
+        tacosRecipe.setServings(5);
         tacosRecipe.setSource("Simply Recipes");
 
         recipes.add(tacosRecipe);
