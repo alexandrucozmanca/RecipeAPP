@@ -37,13 +37,6 @@ public class CategoryTest {
 
     @Test
     public void getRecipes() throws Exception{
-        Set<Recipe> testRecipeSet = new HashSet<>();
-        Recipe testRecipe = new Recipe();
-        testRecipeSet.add(testRecipe);
-
-        category.setRecipes(testRecipeSet);
-
-        assertEquals(testRecipeSet, category.getRecipes());
 
     }
 }
