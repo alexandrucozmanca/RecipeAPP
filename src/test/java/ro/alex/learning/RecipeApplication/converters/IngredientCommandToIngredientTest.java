@@ -1,6 +1,5 @@
 package ro.alex.learning.RecipeApplication.converters;
 
-import javafx.scene.AmbientLight;
 import org.junit.Before;
 import org.junit.Test;
 import ro.alex.learning.RecipeApplication.command.IngredientCommand;
@@ -66,7 +65,7 @@ public class IngredientCommandToIngredientTest {
         command.setDescription(DESCRIPTION);
         command.setAmount(AMOUNT);
         UNIT_OF_MEASURE_COMMAND.setId(UOM_ID_VALUE);
-        command.setUnitOfMeasureCommand(UNIT_OF_MEASURE_COMMAND);
+        command.setUom(UNIT_OF_MEASURE_COMMAND);
 
         //when
         Ingredient ingredient = converter.convert(command);

@@ -1,7 +1,6 @@
 package ro.alex.learning.RecipeApplication.converters;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import ro.alex.learning.RecipeApplication.command.IngredientCommand;
 import ro.alex.learning.RecipeApplication.domain.Ingredient;
@@ -53,7 +52,7 @@ public class IngredientToIngredientCommandTest {
 
         //then
         assertNotNull(command);
-        assertNull(command.getUnitOfMeasureCommand());
+        assertNull(command.getUom());
         assertEquals(ID_VALUE, command.getId());
         assertEquals(DESCRIPTION, command.getDescription());
         assertEquals(AMOUNT, command.getAmount());
@@ -75,11 +74,11 @@ public class IngredientToIngredientCommandTest {
 
         // then
         assertNotNull(command);
-        assertNotNull(command.getUnitOfMeasureCommand());
+        assertNotNull(command.getUom());
         assertEquals(ID_VALUE, command.getId());
         assertEquals(DESCRIPTION, command.getDescription());
         assertEquals(AMOUNT, command.getAmount());
-        //???? assertEquals(new UnitOfMeasureToUnitOfMeasureCommand().convert(UNIT_OF_MEASURE), command.getUnitOfMeasureCommand());
-        assertEquals(UOM_ID_VALUE, command.getUnitOfMeasureCommand().getId());
+        //???? assertEquals(new UnitOfMeasureToUnitOfMeasureCommand().convert(UNIT_OF_MEASURE), command.getUom());
+        assertEquals(UOM_ID_VALUE, command.getUom().getId());
     }
 }
