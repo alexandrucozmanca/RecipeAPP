@@ -24,7 +24,7 @@ public class RecipeControllerTest {
     RecipeController recipeController;
 
     @Before
-    public void setUp() throws Exception{
+    public void setUp() {
         MockitoAnnotations.initMocks(this);
 
         recipeController = new RecipeController(recipeService);

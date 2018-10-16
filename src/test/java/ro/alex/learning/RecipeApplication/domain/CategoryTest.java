@@ -18,7 +18,7 @@ public class CategoryTest {
     }
 
     @Test
-    public void getId() throws Exception{
+    public void getId() {
         Long idValue = 4L;
 
         category.setId(idValue);
@@ -27,7 +27,7 @@ public class CategoryTest {
     }
 
     @Test
-    public void getDescription() throws Exception{
+    public void getDescription() {
         String descriptionValue = "description";
 
         category.setDescription(descriptionValue);
@@ -36,7 +36,7 @@ public class CategoryTest {
     }
 
     @Test
-    public void getRecipes() throws Exception{
+    public void getRecipes() {
 
     }
 }

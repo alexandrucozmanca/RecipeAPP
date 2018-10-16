@@ -23,14 +23,14 @@ public class RecipeServiceImplTest {
     RecipeRepository recipeRepository;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         MockitoAnnotations.initMocks(this);
 
         recipeService = new RecipeServiceImpl(recipeRepository);
     }
 
     @Test
-    public void getRecipeByIdTest() throws Exception{
+    public void getRecipeByIdTest() {
         Recipe recipe = new Recipe();
         recipe.setId(1L);
         Optional<Recipe> recipeOptional = Optional.of(recipe);
@@ -45,7 +45,7 @@ public class RecipeServiceImplTest {
     }
 
     @Test
-    public void getRecipesTest() throws Exception{
+    public void getRecipesTest() {
 
         Recipe recipe = new Recipe();
         HashSet recipesData = new HashSet();
