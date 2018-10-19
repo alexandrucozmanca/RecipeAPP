@@ -25,7 +25,7 @@ public class IngredientToIngredientCommandTest {
 
     @Before
     public void setUp() {
-        converter = new IngredientToIngredientCommand();
+        converter = new IngredientToIngredientCommand(new UnitOfMeasureToUnitOfMeasureCommand());
     }
 
     @Test

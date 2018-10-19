@@ -10,6 +10,13 @@ import ro.alex.learning.RecipeApplication.domain.Ingredient;
 @Component
 public class IngredientToIngredientCommand implements Converter<Ingredient,IngredientCommand> {
 
+
+    UnitOfMeasureToUnitOfMeasureCommand unitOfMeasureToUnitOfMeasureCommand;
+
+    public IngredientToIngredientCommand(UnitOfMeasureToUnitOfMeasureCommand unitOfMeasureToUnitOfMeasureCommand) {
+        this.unitOfMeasureToUnitOfMeasureCommand = unitOfMeasureToUnitOfMeasureCommand;
+    }
+
     @Synchronized
     @Nullable
     @Override
@@ -21,8 +28,10 @@ public class IngredientToIngredientCommand implements Converter<Ingredient,Ingre
         ingredientCommand.setAmount(ingredient.getAmount());
         ingredientCommand.setDescription(ingredient.getDescription());
         ingredientCommand.setId(ingredient.getId());
-        ingredientCommand.setUom(
-                new UnitOfMeasureToUnitOfMeasureCommand().convert(ingredient.getUom()));
+        ingredientCommand.setUom(unitOfMeasureToUnitOfMeasureCommand.convert(ingredient.getUom()));
+
+        if(ingredient.getRecipe() != null)
+        ingredientCommand.setRecipeId(ingredient.getRecipe().getId());
 
         return ingredientCommand;
     }
