@@ -38,7 +38,7 @@ public class RecipeCommandToRecipeTest {
 
 
     private final CategoryCommandToCategory categoryConverter = new CategoryCommandToCategory();
-    private final IngredientCommandToIngredient ingredientConverter = new IngredientCommandToIngredient();
+    private final IngredientCommandToIngredient ingredientConverter = new IngredientCommandToIngredient(new UnitOfMeasureCommandToUnitOfMeasure());
     private final NotesCommandToNotes notesConverter = new NotesCommandToNotes();
     RecipeCommandToRecipe converter;
 

@@ -2,9 +2,11 @@ package ro.alex.learning.RecipeApplication.converters;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
 import ro.alex.learning.RecipeApplication.command.IngredientCommand;
 import ro.alex.learning.RecipeApplication.command.UnitOfMeasureCommand;
 import ro.alex.learning.RecipeApplication.domain.Ingredient;
+import ro.alex.learning.RecipeApplication.repositories.RecipeRepository;
 
 import java.math.BigDecimal;
 
@@ -20,9 +22,12 @@ public class IngredientCommandToIngredientTest {
 
     IngredientCommandToIngredient converter;
 
+    @Mock
+    RecipeRepository recipeRepository;
+
     @Before
     public void setUp() {
-        converter = new IngredientCommandToIngredient();
+        converter = new IngredientCommandToIngredient(new UnitOfMeasureCommandToUnitOfMeasure());
     }
 
     @Test
@@ -76,7 +81,6 @@ public class IngredientCommandToIngredientTest {
         assertEquals(ID_VALUE, ingredient.getId());
         assertEquals(DESCRIPTION, ingredient.getDescription());
         assertEquals(AMOUNT, ingredient.getAmount());
-        assertEquals(new UnitOfMeasureCommandToUnitOfMeasure().convert(UNIT_OF_MEASURE_COMMAND), ingredient.getUom());
         assertEquals(UOM_ID_VALUE, ingredient.getUom().getId());
     }
 }

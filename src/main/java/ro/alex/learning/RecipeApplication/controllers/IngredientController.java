@@ -1,16 +1,18 @@
 package ro.alex.learning.RecipeApplication.controllers;
 
+import com.sun.org.apache.regexp.internal.RE;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ro.alex.learning.RecipeApplication.command.IngredientCommand;
+import ro.alex.learning.RecipeApplication.command.RecipeCommand;
+import ro.alex.learning.RecipeApplication.command.UnitOfMeasureCommand;
 import ro.alex.learning.RecipeApplication.domain.UnitOfMeasure;
 import ro.alex.learning.RecipeApplication.services.IngredientService;
 import ro.alex.learning.RecipeApplication.services.RecipeService;
 import ro.alex.learning.RecipeApplication.services.UnitOfMeasureService;
 
-import java.rmi.StubNotFoundException;
 
 @Slf4j
 @Controller
@@ -47,6 +49,23 @@ public class IngredientController {
                 ingredientService.findByRecipeIdAndIngredientId(Long.valueOf(recipeId), Long.valueOf(ingredientId)));
 
         return "recipe/ingredient/show";
+    }
+
+
+    @GetMapping
+    @RequestMapping("recipe/{recipeId}/ingredient/new")
+    public String newRecipeIngredient(@PathVariable String recipeId, Model model){
+        RecipeCommand recipeCommand = recipeService.findCommandById(Long.valueOf(recipeId));
+
+        IngredientCommand ingredientCommand = new IngredientCommand();
+        ingredientCommand.setRecipeId(Long.valueOf(recipeId));
+
+        model.addAttribute("ingredient", ingredientCommand);
+
+        ingredientCommand.setUom(new UnitOfMeasureCommand());
+
+        model.addAttribute("uomList", unitOfMeasureService.listAllUoms());
+        return "recipe/ingredient/ingredientform";
     }
 
     @GetMapping

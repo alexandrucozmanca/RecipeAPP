@@ -1,6 +1,8 @@
 package ro.alex.learning.RecipeApplication.domain;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.crypto.spec.RC2ParameterSpec;
 import javax.persistence.*;
@@ -8,7 +10,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
-@Data
+@Getter
+@Setter
 @Entity
 public class Recipe implements Comparable<Recipe>{
 
