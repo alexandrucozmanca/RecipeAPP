@@ -13,11 +13,12 @@ import ro.alex.learning.RecipeApplication.domain.Notes;
 import java.io.PipedReader;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class RecipeCommand {
+public class RecipeCommand implements Comparable<RecipeCommand>{
     private Long id;
     private String description;
     private Integer prepTime;
@@ -29,8 +30,18 @@ public class RecipeCommand {
     private Difficulty difficulty;
     private NotesCommand notes;
     private Set<CategoryCommand> categories = new HashSet<>();
-    private Set<IngredientCommand> ingredients = new HashSet<>();
+    private Set<IngredientCommand> ingredients = new TreeSet<>();
 
 
 
+    @Override
+    public int compareTo(RecipeCommand other) {
+        if(other == null || other.getId() == null)
+            return 1;
+
+        if (this == null || this.getId() == null)
+            return -1;
+
+        return Long.compare(this.getId(), other.getId());
+    }
 }

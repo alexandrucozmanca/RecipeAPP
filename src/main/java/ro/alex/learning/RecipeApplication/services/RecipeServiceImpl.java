@@ -13,6 +13,7 @@ import javax.transaction.Transactional;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
+import java.util.TreeSet;
 
 @Slf4j
 @Service
@@ -32,7 +33,7 @@ public class RecipeServiceImpl implements RecipeService {
     public Set<Recipe> getRecipes() {
 
         log.debug("Get recipes by service");
-        Set<Recipe> recipeSet = new HashSet<>();
+        Set<Recipe> recipeSet = new TreeSet<>();
         recipeRepository.findAll().iterator().forEachRemaining(recipeSet::add);
         return recipeSet;
     }

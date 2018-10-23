@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 @Data
 @EqualsAndHashCode(exclude = {"recipe"})
 @Entity
-public class Ingredient {
+public class Ingredient implements Comparable<Ingredient>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,6 +36,18 @@ public class Ingredient {
         this.amount = amount;
         this.uom = uom;
         this.recipe = recipe;
+    }
+
+
+    @Override
+    public int compareTo(Ingredient other){
+        if(other == null || other.getId() == null)
+            return 1;
+
+        if (this == null || this.getId() == null)
+            return -1;
+
+        return Long.compare(this.getId(), other.getId());
     }
 
 }
