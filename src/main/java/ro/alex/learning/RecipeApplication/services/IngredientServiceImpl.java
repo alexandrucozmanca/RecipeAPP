@@ -11,7 +11,7 @@ import ro.alex.learning.RecipeApplication.repositories.RecipeRepository;
 import ro.alex.learning.RecipeApplication.repositories.UnitOfMeasureRepository;
 
 import javax.persistence.criteria.CriteriaBuilder;
-import java.util.Optional;
+import java.util.*;
 
 @Slf4j
 @Service
@@ -56,10 +56,12 @@ public class IngredientServiceImpl implements IngredientService {
     @Override
     public IngredientCommand saveIngredientCommand(IngredientCommand ingredientCommand) {
         Optional<Recipe> recipeOptional = recipeRepository.findById(ingredientCommand.getRecipeId());
+
         if (!recipeOptional.isPresent()){
             log.error("Recipe not found for id: " + ingredientCommand.getRecipeId());
             return new IngredientCommand();
-        } else {
+        }
+        else {
             Recipe recipe = recipeOptional.get();
 
             Optional<Ingredient> ingredientOptional = recipe
@@ -85,16 +87,55 @@ public class IngredientServiceImpl implements IngredientService {
             Optional<Ingredient> savedIngredientOptional = savedRecipe.getIngredients().stream()
                     .filter(recipeIngredients -> recipeIngredients.getId().equals(ingredientCommand.getId()))
                     .findFirst();
-
+/*
             if(!savedIngredientOptional.isPresent()){
                 savedIngredientOptional = savedRecipe.getIngredients().stream()
                         .filter(recipeIngredients -> recipeIngredients.getDescription().equals(ingredientCommand.getDescription()))
                         .filter(recipeIngredients -> recipeIngredients.getAmount().equals(ingredientCommand.getAmount()))
                         .filter(recipeIngredients -> recipeIngredients.getUom().getId().equals(ingredientCommand.getUom().getId()))
                         .findFirst();
-            }
+            }*/
 
             return ingredientToIngredientCommand.convert(savedIngredientOptional.get());
+        }
+
+
+    }
+
+    @Override
+    public void deleteByRecipeIdAndIngredientId(Long recipeId, Long ingredientId) {
+
+        if(!recipeRepository.findById(recipeId).isPresent()){
+            log.error("Recipe not found for id: " + recipeId);
+        } else{
+           Set<Ingredient> ingredients = new TreeSet<>(recipeRepository.findById(recipeId).get().getIngredients());
+
+
+           ingredients.stream().forEach(ingredient ->
+            {if (ingredient.getId().equals(ingredientId))
+            { System.out.println("Removing id: " + ingredientId);
+                Recipe recipe = recipeRepository.findById(recipeId).get();
+                ingredient.setRecipe(null);
+                recipe.getIngredients().remove(ingredient);
+                recipeRepository.save(recipe);}});
+
+            /*
+            Set<Ingredient> ingredients = recipeRepository.findById(recipeId).get().getIngredients();
+
+            Iterator<Ingredient> iterator = ingredients.iterator();
+
+            while(iterator.hasNext()){
+                if(Long.valueOf(iterator.next().getId()).equals(ingredientId))
+                {
+                    iterator.remove();
+                    System.out.println("Atempting to delete ing: " + ingredientId);
+                }
+            }
+
+           recipeRepository.findById(recipeId).get().setIngredients(ingredients);
+           */
+
+
         }
 
     }

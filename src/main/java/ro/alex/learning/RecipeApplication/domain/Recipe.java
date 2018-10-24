@@ -37,7 +37,7 @@ public class Recipe implements Comparable<Recipe>{
         inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "recipe")
     private Set<Ingredient> ingredients = new TreeSet<Ingredient>();
 
     @Lob
