@@ -78,7 +78,7 @@ public class IngredientController {
         return "recipe/ingredient/ingredientform";
     }
 
-    @PostMapping
+    @PutMapping
     @RequestMapping("recipe/{recipeId}/ingredient")
     public String saveOrUpdate(@ModelAttribute IngredientCommand ingredientCommand){
         IngredientCommand savedIngredient = ingredientService.saveIngredientCommand(ingredientCommand);
@@ -88,7 +88,7 @@ public class IngredientController {
         return "redirect:/recipe/" + savedIngredient.getRecipeId() +"/ingredient/" + savedIngredient.getId() + "/show/";
     }
 
-    @PostMapping
+    @GetMapping
     @RequestMapping("recipe/{recipeId}/ingredient/{ingredientId}/delete")
     public String deleteIngredient(@PathVariable String recipeId, @PathVariable String ingredientId){
         log.debug("Deleting ingredient id:" + ingredientId);
