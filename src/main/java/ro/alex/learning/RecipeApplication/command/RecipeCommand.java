@@ -31,6 +31,7 @@ public class RecipeCommand implements Comparable<RecipeCommand>{
     private NotesCommand notes;
     private Set<CategoryCommand> categories = new HashSet<>();
     private Set<IngredientCommand> ingredients = new TreeSet<>();
+    private Byte[] image;
 
 
 
