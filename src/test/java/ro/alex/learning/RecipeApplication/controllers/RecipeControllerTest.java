@@ -1,5 +1,6 @@
 package ro.alex.learning.RecipeApplication.controllers;
 
+import org.hibernate.validator.constraints.br.TituloEleitoral;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -9,6 +10,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import ro.alex.learning.RecipeApplication.command.RecipeCommand;
 import ro.alex.learning.RecipeApplication.domain.Recipe;
+import ro.alex.learning.RecipeApplication.exceptions.NotFoundException;
 import ro.alex.learning.RecipeApplication.services.RecipeService;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -51,6 +53,17 @@ public class RecipeControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("recipe/show"))
                 .andExpect(model().attributeExists("recipe"));
+    }
+
+    @Test
+    public void testGetRecipeNotFound() throws Exception{
+        Recipe recipe = new Recipe();
+        recipe.setId(1L);
+
+        when(recipeService.findById(anyLong())).thenThrow(NotFoundException.class);
+
+        mockMvc.perform(get("/recipe/1/show"))
+                .andExpect(status().isNotFound());
     }
 
     @Test

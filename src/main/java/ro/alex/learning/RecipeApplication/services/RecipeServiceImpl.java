@@ -7,6 +7,7 @@ import ro.alex.learning.RecipeApplication.converters.RecipeCommandToRecipe;
 import ro.alex.learning.RecipeApplication.converters.RecipeToRecipeCommand;
 import ro.alex.learning.RecipeApplication.domain.Category;
 import ro.alex.learning.RecipeApplication.domain.Recipe;
+import ro.alex.learning.RecipeApplication.exceptions.NotFoundException;
 import ro.alex.learning.RecipeApplication.repositories.RecipeRepository;
 
 import javax.transaction.Transactional;
@@ -44,7 +45,7 @@ public class RecipeServiceImpl implements RecipeService {
         Optional<Recipe> recipeOptional = recipeRepository.findById(l);
 
         if(!recipeOptional.isPresent()){
-            throw new RuntimeException("Recipe not Found");
+            throw new NotFoundException("Recipe not Found");
         }
 
         return recipeOptional.get();
