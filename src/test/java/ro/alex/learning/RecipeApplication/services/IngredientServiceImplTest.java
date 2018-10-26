@@ -13,6 +13,7 @@ import ro.alex.learning.RecipeApplication.repositories.IngredientRepository;
 import ro.alex.learning.RecipeApplication.repositories.RecipeRepository;
 import ro.alex.learning.RecipeApplication.repositories.UnitOfMeasureRepository;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Optional;
 
 import static org.junit.Assert.*;
@@ -111,6 +112,27 @@ public class IngredientServiceImplTest {
         verify(recipeRepository, times(1)).findById(anyLong());
         verify(recipeRepository, times(1)).save(any(Recipe.class));
 
+    }
+
+    @Test
+    public void testDeleteByRecipeIdAndIngredientId() throws Exception{
+        // given
+        Recipe recipe = new Recipe();
+        Ingredient ingredient = new Ingredient();
+        ingredient.setId(3L);
+        recipe.addIngredient(ingredient);
+        ingredient.setRecipe(recipe);
+
+        Optional<Recipe> recipeOptional = Optional.of(recipe);
+
+        when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+
+        // when
+        ingredientService.deleteByRecipeIdAndIngredientId(1L, 3L);
+
+        // then
+        verify(recipeRepository,times(1)).findById(anyLong());
+        verify(recipeRepository,times(1)).save(any(Recipe.class));
     }
 }
 
