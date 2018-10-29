@@ -45,6 +45,8 @@ public class RecipeCommand implements Comparable<RecipeCommand>{
 
     @URL
     private String url;
+
+    @NotBlank
     private String directions;
     private Difficulty difficulty;
     private NotesCommand notes;
