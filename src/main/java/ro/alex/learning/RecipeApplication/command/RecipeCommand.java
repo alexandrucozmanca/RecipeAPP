@@ -3,6 +3,7 @@ package ro.alex.learning.RecipeApplication.command;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.URL;
 import org.omg.CORBA.INTERNAL;
 import org.springframework.context.annotation.Primary;
 import ro.alex.learning.RecipeApplication.domain.Category;
@@ -10,6 +11,10 @@ import ro.alex.learning.RecipeApplication.domain.Difficulty;
 import ro.alex.learning.RecipeApplication.domain.Ingredient;
 import ro.alex.learning.RecipeApplication.domain.Notes;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.io.PipedReader;
 import java.util.HashSet;
 import java.util.Set;
@@ -20,11 +25,25 @@ import java.util.TreeSet;
 @NoArgsConstructor
 public class RecipeCommand implements Comparable<RecipeCommand>{
     private Long id;
+
+    @NotBlank
+    @Size(min = 3, max = 255)
     private String description;
+
+    @Min(1)
+    @Max(999)
     private Integer prepTime;
+
+    @Min(1)
+    @Max(999)
     private Integer cookTime;
+
+    @Min(1)
+    @Max(100)
     private Integer servings;
     private String source;
+
+    @URL
     private String url;
     private String directions;
     private Difficulty difficulty;
