@@ -5,13 +5,11 @@ import org.springframework.stereotype.Service;
 import ro.alex.learning.RecipeApplication.command.RecipeCommand;
 import ro.alex.learning.RecipeApplication.converters.RecipeCommandToRecipe;
 import ro.alex.learning.RecipeApplication.converters.RecipeToRecipeCommand;
-import ro.alex.learning.RecipeApplication.domain.Category;
 import ro.alex.learning.RecipeApplication.domain.Recipe;
 import ro.alex.learning.RecipeApplication.exceptions.NotFoundException;
 import ro.alex.learning.RecipeApplication.repositories.RecipeRepository;
 
 import javax.transaction.Transactional;
-import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;

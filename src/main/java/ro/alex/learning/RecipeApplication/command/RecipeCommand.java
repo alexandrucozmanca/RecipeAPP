@@ -4,18 +4,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.URL;
-import org.omg.CORBA.INTERNAL;
-import org.springframework.context.annotation.Primary;
-import ro.alex.learning.RecipeApplication.domain.Category;
 import ro.alex.learning.RecipeApplication.domain.Difficulty;
-import ro.alex.learning.RecipeApplication.domain.Ingredient;
-import ro.alex.learning.RecipeApplication.domain.Notes;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.io.PipedReader;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;

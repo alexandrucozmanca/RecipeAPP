@@ -1,27 +1,25 @@
 package ro.alex.learning.RecipeApplication.services;
 
-import com.sun.org.apache.regexp.internal.RE;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import ro.alex.learning.RecipeApplication.command.IngredientCommand;
-import ro.alex.learning.RecipeApplication.converters.*;
+import ro.alex.learning.RecipeApplication.converters.IngredientCommandToIngredient;
+import ro.alex.learning.RecipeApplication.converters.IngredientToIngredientCommand;
+import ro.alex.learning.RecipeApplication.converters.UnitOfMeasureCommandToUnitOfMeasure;
+import ro.alex.learning.RecipeApplication.converters.UnitOfMeasureToUnitOfMeasureCommand;
 import ro.alex.learning.RecipeApplication.domain.Ingredient;
 import ro.alex.learning.RecipeApplication.domain.Recipe;
-import ro.alex.learning.RecipeApplication.repositories.IngredientRepository;
 import ro.alex.learning.RecipeApplication.repositories.RecipeRepository;
 import ro.alex.learning.RecipeApplication.repositories.UnitOfMeasureRepository;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Optional;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class IngredientServiceImplTest {
 

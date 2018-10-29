@@ -2,9 +2,7 @@ package ro.alex.learning.RecipeApplication.converters;
 
 import org.junit.Before;
 import org.junit.Test;
-import ro.alex.learning.RecipeApplication.command.CategoryCommand;
 import ro.alex.learning.RecipeApplication.command.NotesCommand;
-import ro.alex.learning.RecipeApplication.domain.Category;
 import ro.alex.learning.RecipeApplication.domain.Notes;
 
 import static org.junit.Assert.*;

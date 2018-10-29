@@ -12,7 +12,6 @@ import org.springframework.web.multipart.MultipartFile;
 import ro.alex.learning.RecipeApplication.command.RecipeCommand;
 import ro.alex.learning.RecipeApplication.services.ImageService;
 import ro.alex.learning.RecipeApplication.services.RecipeService;
-import sun.nio.ch.IOUtil;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;

@@ -2,19 +2,17 @@ package ro.alex.learning.RecipeApplication.converters;
 
 import org.junit.Before;
 import org.junit.Test;
-import ro.alex.learning.RecipeApplication.command.*;
-import ro.alex.learning.RecipeApplication.domain.Category;
+import ro.alex.learning.RecipeApplication.command.CategoryCommand;
+import ro.alex.learning.RecipeApplication.command.IngredientCommand;
+import ro.alex.learning.RecipeApplication.command.NotesCommand;
+import ro.alex.learning.RecipeApplication.command.RecipeCommand;
 import ro.alex.learning.RecipeApplication.domain.Difficulty;
-import ro.alex.learning.RecipeApplication.domain.Ingredient;
 import ro.alex.learning.RecipeApplication.domain.Recipe;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import static org.junit.Assert.*;
-import static org.junit.Assert.assertEquals;
 
 public class RecipeCommandToRecipeTest {
 

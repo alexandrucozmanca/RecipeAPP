@@ -10,7 +10,7 @@ import ro.alex.learning.RecipeApplication.domain.UnitOfMeasure;
 
 import java.util.Optional;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest

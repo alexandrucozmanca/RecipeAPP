@@ -10,9 +10,8 @@ import ro.alex.learning.RecipeApplication.domain.Recipe;
 import ro.alex.learning.RecipeApplication.repositories.RecipeRepository;
 import ro.alex.learning.RecipeApplication.repositories.UnitOfMeasureRepository;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.transaction.Transactional;
-import java.util.*;
+import java.util.Optional;
 
 @Slf4j
 @Service
